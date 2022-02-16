@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Covid_19 Visualizer</title>
     <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-      <hi>test</hi>
-	<script src="index.js"></script>
-  </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+    <script src="path/to/chartjs/dist/chart.js"></script>
+</head>
+
+<body>
+    <hi>test</hi>
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script>
+        const ctx = document.getElementById('myChart');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderColor: 'red',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="index.js"></script>
+</body>
+
 </html>
