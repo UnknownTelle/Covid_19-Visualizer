@@ -1,0 +1,23 @@
+{
+  "name": "covid_19-visualizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UnknownTelle/Covid_19-Visualizer.git"
+  },
+  "author": "Telle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UnknownTelle/Covid_19-Visualizer/issues"
+  },
+  "homepage": "https://github.com/UnknownTelle/Covid_19-Visualizer#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
