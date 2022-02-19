@@ -8,39 +8,10 @@
     <title>Covid_19 Visualizer</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 
 <body>
-    <hi>test</hi>
     <canvas id="myChart" width="400" height="400"></canvas>
-    <script>
-        const ctx = document.getElementById('myChart');
-        const myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderColor: 'red',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: false,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-        d3.csv('./assets/testData.csv'), function(data){
-        console.log(data);}
-
-        
-    </script>
     <script src="index.js"></script>
 </body>
 
