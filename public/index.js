@@ -1,9 +1,17 @@
+/*  NOTES:
+    Look at https://chartjs-chart-matrix.pages.dev/ to make a calendar chart with chart.js
+    Finlish placing in the csv data
+    Move the csv data within its own files
+    Look into making the csv read better (its fine for now)
+    Move chart config into its own file
+*/
+
 window.addEventListener('load', setup);
 async function setup() {
     const ctx = document.getElementById('myChart').getContext('2d');
     const covidData = await getData();
     const myChart = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
             labels: covidData.date,
             datasets: [
@@ -30,7 +38,15 @@ async function setup() {
                     borderColor: 'green',
                     backgroundColor: 'green',
                     borderWidth: 1
-                }
+                },
+                {
+                    label: 'Total Deaths',
+                    data: covidData.total_deaths,
+                    fill: false,
+                    borderColor: 'blue',
+                    backgroundColor: 'blue',
+                    borderWidth: 1
+                },
             ]
         },
         options: { responsive: false }
@@ -40,21 +56,55 @@ async function setup() {
 async function getData() {
     const response = await fetch('data/UK_data.csv');
     const data = await response.text();
-    const date = [];
-    const total_cases = [];
-    const new_cases = [];
-    const new_cases_smoothed = [];
+    // make an array for all filds
+    const date = [],
+        total_cases = [], 
+        new_cases = [], 
+        new_cases_smoothed = [],
+        total_deaths = [],
+        new_deaths = [],
+        new_deaths_smoothed = [],
+        total_cases_per_million = [],
+        new_cases_per_million = [],
+        new_cases_smoothed_per_million = [],
+        total_deaths_per_million = [],
+        new_deaths_per_million = [],
+        new_deaths_smoothed_per_million = [],
+        reproduction_rate = [];
+    // placing the data within the correct array
     const rows = data.split('\n').slice(1);
     rows.forEach(row => {
-        const cols = row.split(',');
-        date.push(cols[0]);
-        total_cases.push(parseFloat(cols[1]));
-        new_cases.push(parseFloat(cols[2]));
-        new_cases_smoothed.push(parseFloat(cols[3]));
+        const d = row.split(',');
+        date.push(d[0]);
+        total_cases.push(d[1]);
+        new_cases.push(d[2]);
+        new_cases_smoothed.push(d[3]);
+        total_deaths.push(d[4]);
+        new_deaths.push(d[5]);
+        new_deaths_smoothed.push(d[6]);
+        total_cases_per_million.push(d[7]);
+        new_cases_per_million.push(d[8]);
+        new_cases_smoothed_per_million.push(d[9]);
+        total_deaths_per_million.push(d[10]);
+        new_deaths_per_million.push(d[11]);
+        new_deaths_smoothed_per_million.push(d[12]);
+        reproduction_rate.push(d[13]);
     });
-    console.log(date);
-    console.log(total_cases);
-    console.log(new_cases);
-    console.log(new_cases_smoothed);
-    return { date, total_cases, new_cases, new_cases_smoothed };
+    // returing these arrays
+    return { 
+        date,
+        total_cases, 
+        new_cases, 
+        new_cases_smoothed,
+        total_deaths,
+        new_deaths,
+        new_deaths_smoothed,
+        total_cases_per_million,
+        new_cases_per_million,
+        new_cases_smoothed_per_million,
+        total_deaths_per_million,
+        new_deaths_per_million,
+        new_deaths_smoothed_per_million,
+        reproduction_rate
+    };
 }
