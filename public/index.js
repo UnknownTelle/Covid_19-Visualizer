@@ -22,7 +22,7 @@ async function setup() {
 }
 
 async function getData() {
-    const response = await fetch('testData.csv');
+    const response = await fetch('data/testData.csv');
     const data = await response.text();
     const years = [];
     const values = [];
