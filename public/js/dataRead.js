@@ -1,10 +1,27 @@
+
+// an idea on how to use the buttons within the html page
+async function csvUsed() {
+    if (year2020) { 
+        const response = await fetch('data/UK_data.csv');
+        const data = await response.text(); 
+    }
+    if (year2021) {
+        const response = await fetch('data/UK_data.csv');
+        const data = await response.text();
+    }
+    else {
+        const response = await fetch('data/UK_data.csv');
+        const data = await response.text();
+    }
+}
+
 async function getData() {
     const response = await fetch('data/UK_data.csv');
     const data = await response.text();
     // make an array for all filds
     const date = [],
-        total_cases = [], 
-        new_cases = [], 
+        total_cases = [],
+        new_cases = [],
         new_cases_smoothed = [],
         total_deaths = [],
         new_deaths = [],
@@ -36,10 +53,10 @@ async function getData() {
         reproduction_rate.push(d[13]);
     });
     // returing these arrays
-    return { 
+    return {
         date,
-        total_cases, 
-        new_cases, 
+        total_cases,
+        new_cases,
         new_cases_smoothed,
         total_deaths,
         new_deaths,
