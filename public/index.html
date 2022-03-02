@@ -8,26 +8,62 @@
     <title>Covid_19 Visualizer</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-    <!--Sidebar-->
-    <nav class="sidebar">
-        <div class="sidebar-title">
-            <h4>Dashbored</h4>
+    <div class="main-container">
+        <!--Header-->
+        <div class="header-container">
+            <div class="header-title">Covid-19: UK Data Visualization Dashboard</div>
         </div>
-        <div class="sidebar-block"></div>
-    </nav>
-    <!--Main body-->
-    <div class="main-body">
+        <!-- Sidebar -->
+        <div class="sidebar-container">
+            <div class="sidebar-body">
+                <div class="sidebar-date">
+                    <button class="date-button">2020</button>
+                    <button class="date-button">2021</button>
+                    <button class="date-button">2022</button>
+                </div>
+                <!--This won't select more then one, look at getting it to select mutiple-->
+                <form>                                  
+                <select class="sidebar-listbox" name="fild-selection[]" size="11" multiple>
+                    <option value="total_cases">total_cases</option>
+                    <option value="new_cases">new_cases</option>
+                    <option value="new_cases_smoothed">new_cases_smoothed</option>
+                    <option value="total_deaths">total_deaths</option>
+                    <option value="new_deaths">new_deaths</option>
+                    <option value="new_deaths_smoothed">new_deaths_smoothed</option>
+                    <option value="total_cases_per_million">total_cases_per_million</option>
+                    <option value="new_cases_per_million">new_cases_per_million</option>
+                    <option value="new_cases_smoothed_per_million">new_cases_smoothed_per_million</option>
+                    <option value="total_deaths_per_million">total_deaths_per_million</option>
+                    <option value="new_deaths_per_million">new_deaths_per_million</option>
+                    <option value="new_deaths_smoothed_per_million">new_deaths_smoothed_per_million</option>
+                    <option value="reproduction_rate">reproduction_rate</option>
+                    <option value=""></option>
+                </select>
+                <!---Look at removing this so it will add as and when the user selets-->
+                <input type="submit">
+            </form>
+            <!--Look at adding the list od selected fileds
+                Can be done by an array-->
+                <button class="sidebar-button">Reset Form</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Main body -->
+    <div class="body-container">
         <div class="chart-body">
-            <canvas id="myChart" width="1500" height="400"></canvas>
+            <canvas class="chart" id="myChart" width="1250" height="600"></canvas>
         </div>
-        <!--Footer-->
-        <div class="footer">
-            <p>COMP3000 Computing Project - Covid_19 Visualizer</p>
-        </div>
+    </div>
+    <!-- Footer -->
+    <div class="footer-container">
+        <p>COMP3000 Computing Project - Covid_19 Visualizer</p>
+    </div>
     </div>
     <script src="js/index.js"></script>
     <script src="js/dataRead.js"></script>
