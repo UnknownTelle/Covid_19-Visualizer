@@ -12,7 +12,8 @@
     border-width: 1px;
 }
 .header-title {
-    font-size: 60px;
+    position: relative;
+    font-size: 50px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -46,11 +47,17 @@
     width: 80%;
     height: 90%;
 }
-.chart-body {
-    position: absolute;
-    top: 30px;
-    left: 60px;
-}
+canvas {
+    border: 1px dotted red;
+  }
+  
+  .chart-container {
+    position: relative;
+    margin: auto;
+    height: 80vh;
+    width: 80vw;
+  }
+  
 /*footer*/
 .footer-container {
     position: absolute;
