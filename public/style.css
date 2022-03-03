@@ -13,7 +13,7 @@
 }
 .header-title {
     position: relative;
-    font-size: 50px;
+    font-size: clamp(1.5rem, 3vw, 4rem);
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -29,7 +29,9 @@
     padding: 10px;
 }
 .date-button {
-    width: 32.41%;
+    position: relative;
+    font-size: small;
+    min-width: 32%;
 }
 .sidebar-button {
     width: 100%;
@@ -57,7 +59,7 @@ canvas {
     height: 80vh;
     width: 80vw;
   }
-  
+
 /*footer*/
 .footer-container {
     position: absolute;
