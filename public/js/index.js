@@ -51,6 +51,6 @@ async function setup() {
                 },
             ]
         },
-        options: { responsive: false }
+        options: { responsive: true }
     });
 }
