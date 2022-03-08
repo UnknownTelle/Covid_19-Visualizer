@@ -52,11 +52,7 @@
     left: 20%;
     width: 80%;
     height: 90%;
-}
-canvas {
-    border: 1px dotted red;
-  }
-  
+} 
   .chart-container {
     position: relative;
     margin: auto;
