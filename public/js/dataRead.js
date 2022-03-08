@@ -1,23 +1,28 @@
 
-// an idea on how to use the buttons within the html page
-async function csvUsed() {
-    if (year2020) { 
-        const response = await fetch('data/UK_data.csv');
-        const data = await response.text(); 
+// add the correct csv file in the switch statment
+async function dataFileChoice(year){
+    let response;
+    let data;
+    switch (year) {
+        case 2020:
+            response = await fetch('data/UK_data.csv');
+            data = await response.text(); 
+            break;
+        case 2021:
+            response = await fetch('data/UK_data.csv');
+            data = await response.text();
+            break;
+        case 2022:
+            response = await fetch('data/UK_data.csv');
+            data = await response.text();  
+            break;
+        default: data = null; break;
     }
-    if (year2021) {
-        const response = await fetch('data/UK_data.csv');
-        const data = await response.text();
-    }
-    else {
-        const response = await fetch('data/UK_data.csv');
-        const data = await response.text();
-    }
+    return data
 }
 
-async function getData() {
-    const response = await fetch('data/UK_data.csv');
-    const data = await response.text();
+async function getData(year) {
+    const data = await dataFileChoice(year)
     // make an array for all filds
     const date = [],
         total_cases = [],

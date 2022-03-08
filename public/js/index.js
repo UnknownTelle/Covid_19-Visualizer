@@ -6,14 +6,11 @@
     Move chart config into its own file
 */
 
-
-
-window.addEventListener('load', setup);
-async function setup() {
+async function setup(year) {
     const ctx = document.getElementById('myChart').getContext('2d');
-    const covidData = await getData();
+    const covidData = await getData(year);
     const myChart = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
             labels: covidData.date,
             datasets: [
