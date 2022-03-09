@@ -36,13 +36,13 @@ async function getChart(){
     }
     // Render Block
     const chart = new Chart(
-        document.getElementById('myChart'),
+        document.getElementById('chart'),
         config
     )
 }
 
 // async function setup(year) {
-//     const ctx = document.getElementById('myChart').getContext('2d');
+//     const ctx = document.getElementById('chart').getContext('2d');
 //     const covidData = await getData(year);
 //     const myChart = new Chart(ctx, {
 //         type: 'line',
