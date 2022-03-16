@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const app = express();
 
+const dataRead = require('./server/readData.js');
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
