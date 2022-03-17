@@ -1,6 +1,6 @@
 // video using https://www.youtube.com/watch?v=185_Ofuq7T0&ab_channel=ChartJS
 
-//window.onload = drawChart();
+window.onload = drawChart();
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
@@ -12,15 +12,89 @@ function getRandomColor() {
 
 async function drawChart(year) {
     // Setup Block
-
-    const covidData = await getData(year);
+    const covidData = await sortFile(year);
     const data = {
         labels: covidData.date,
-        datasets:[{
-            label: 'New Cases',
-            backgroundColor: getRandomColor(),
-            data: covidData.new_cases,
-        }]
+        datasets: [
+            {
+                label: 'Total Cases',
+                backgroundColor: getRandomColor(),
+                fill: false,
+                data: covidData.total_cases,
+            },
+            {
+                label: 'New Cases',
+                backgroundColor: getRandomColor(),
+                fill: false,
+                data: covidData.new_cases,
+            },
+            {
+                label: 'New Cases Smoothed',
+                backgroundColor: getRandomColor(),
+                fill: false,
+                data: covidData.new_cases_smoothed,
+            },
+            {
+                label: 'Total Deaths',
+                backgroundColor: getRandomColor(),
+                fill: false,
+                data: covidData.total_deaths,
+            },
+            {
+                label: 'New Deaths',
+                backgroundColor: getRandomColor(),
+                fill: false,
+                data: covidData.new_deaths,
+            },
+            {
+                label: 'New Deaths Smoothed',
+                backgroundColor: getRandomColor(),
+                fill: false,
+                data: covidData.new_deaths_smoothed,
+            },
+            {
+                label: 'Total Cases Per Million',
+                backgroundColor: getRandomColor(),
+                fill: false,
+                data: covidData.total_cases_per_million,
+            },
+            {
+                label: 'New Cases Per Million',
+                backgroundColor: getRandomColor(),
+                fill: false,
+                data: covidData.new_cases_per_million,
+            },
+            {
+                label: 'New Cases Smoothed Per Million',
+                backgroundColor: getRandomColor(),
+                fill: false,
+                data: covidData.new_cases_smoothed_per_million,
+            },
+            {
+                label: 'Total Deaths Per Milllion',
+                backgroundColor: getRandomColor(),
+                fill: false,
+                data: covidData.total_deaths_per_million,
+            },
+            {
+                label: 'New Deaths Per Million',
+                backgroundColor: getRandomColor(),
+                fill: false,
+                data: covidData.new_deaths_per_million,
+            },
+            {
+                label: 'New Deaths Smoothed Per Million',
+                backgroundColor: getRandomColor(),
+                fill: false,
+                data: covidData.new_deaths_smoothed_per_million,
+            },
+            {
+                label: 'Reproduction Rate',
+                backgroundColor: getRandomColor(),
+                fill: false,
+                data: covidData.reproduction_rate,
+            },
+        ]
     }
     // Config Block
     const config = {
