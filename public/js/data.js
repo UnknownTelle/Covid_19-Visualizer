@@ -11,7 +11,7 @@ const getFile = async (year) => {
     let data;
     switch (year) {
         case 2020:
-            response = await fetch('../data/covid-data-2020.csv');
+            response = await fetch('data/UK_data.csv');
             data = await response.text(); 
             break;
         case 2021:
