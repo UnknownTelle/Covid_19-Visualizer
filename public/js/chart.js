@@ -1,6 +1,5 @@
 // video using https://www.youtube.com/watch?v=185_Ofuq7T0&ab_channel=ChartJS
 
-window.onload = drawChart();
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
@@ -9,10 +8,10 @@ function getRandomColor() {
     }
     return color;
 }
-
-async function drawChart(year) {
+let chart ;
+async function drawChart(chartChoice) {
     // Setup Block
-    const covidData = await sortFile(year);
+    const covidData = await sortFile();
     const data = {
         labels: covidData.date,
         datasets: [
@@ -98,13 +97,13 @@ async function drawChart(year) {
     }
     // Config Block
     const config = {
-        type: 'line',
+        type: chartChoice,
         data: data,
         options: {
             maintainAspectRatio: false,
             responsive: true,
             legend: {
-                position: 'left',
+                position: 'false',
             },
             scales: {
                 xAxes: [{
@@ -115,12 +114,24 @@ async function drawChart(year) {
                 }]
             },
         },
-        plugins: [],
           
     }
     // Render Block
-    const chart = new Chart(
+    chart = new Chart(
         document.getElementById('chart'),
         config
     )
+}
+
+// changes the chart type object
+const chartType = (type) => {
+    chart.destroy();
+    switch(type) {
+        case 'bar':
+            drawChart('bar');
+          break;
+        case 'line':
+            drawChart('line');
+          break;
+      }
 }
