@@ -25,14 +25,40 @@
     </div>
     <!-- Main body -->
     <div class="body-container">
-        <div class="button-container">
-            <button class="date-button" onclick="drawChart(2020)">2020</button>
-            <button class="date-button" onclick="drawChart(2021)">2021</button>
-            <button class="date-button" onclick="drawChart(2022)">2022</button>
-            <button id="reset">Reset</button>
+        <div class="side-bar">
+            <div class="date-choice">
+                <label class="data-label" for="start">Start date:</label>
+                <input class="date-start" type="date" id="start" name="trip-start" value="2020-01-02" min="2020-01-02" max="2020-12-31">
+                <label class="data-label" for="end">End date:</label>
+                <input class="date-end" type="date" id="start" name="trip-start" value="2020-12-31" min="2020-01-03" max="2020-12-31">
+            </div>
+            <div>
+                <select class="metrix-choice" multiple="multiple" size="22">
+                    <option value="date">Date</option>
+                    <option value="total_cases">Total Cases</option>
+                    <option value="new_cases">New Cases</option>
+                    <option value="new_cases_smoothed">New Cases Smoothed</option>
+                    <option value="total_deaths">Total Deaths</option>
+                    <option value="new_deaths">New Deaths</option>
+                    <option value="new_deaths_smoothed">New Deaths Smoothed</option>
+                    <option value="total_cases_per_million">Total Cases Per Million</option>
+                    <option value="new_cases_per_million">New Cases Per Million</option>
+                    <option value="new_cases_smoothed_per_million">New Cases Smoothed Per Million</option>
+                    <option value="total_deaths_per_million">Total Deaths Per Million</option>
+                    <option value="new_deaths_per_million">New Deaths Per Million</option>
+                    <option value="new_deaths_smoothed_per_million">New Deaths Smoothed Per Million</option>
+                    <option value="reproduction_rate">Reproduction Rate</option>
+                </select>
+            </div>
         </div>
         <div class="chart-container">
-            <canvas id="chart"></canvas>
+            <div class="canvas-container">
+                <canvas id="chart"></canvas>
+            </div>
+            <button class="chart-button">Bar</button>
+            <button class="chart-button">Line</button>
+            <button class="chart-button">Calendar</button>
+            <button class="chart-button">Table</button>
         </div>
     </div>
     <!-- Footer -->
