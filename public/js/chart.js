@@ -137,21 +137,16 @@ const chartType = (type) => {
       }
 }
 
-async function addData(dataName) {
-    const gettingData = await sortFile();
-    console.log('this is dateName val ' + dataName)
-    switch(dataName) {
-        case 'total_cases':
-            chart.data.datasets.data.push(gettingData.total_cases)
-    }
-    //chart.data.labels.push(gettingData.date); // This push label
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(gettingData.reproduction_rate) // This is not pushing anything
-    });
-    chart.update();
-}
-
-document.getElementById('data-select').addEventListener('change', function () {
-    addData(this.value);
-    console.log('You selected: ', this.value);
-});
+// async function addData(dataName) {
+//     const gettingData = await sortFile();
+//     console.log('this is dateName val ' + dataName)
+//     switch(dataName) {
+//         case 'total_cases':
+//             chart.data.datasets.data.push(gettingData.total_cases)
+//     }
+//     //chart.data.labels.push(gettingData.date); // This push label
+//     chart.data.datasets.forEach((dataset) => {
+//         dataset.data.push(gettingData.reproduction_rate) // This is not pushing anything
+//     });
+//     chart.update();
+// }

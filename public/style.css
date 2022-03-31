@@ -1,3 +1,12 @@
+/* colour schem 
+Header / Footer = #393E41
+Text = White
+background = #BFB8B0
+Sidebar =
+Chart = 
+*/
+
+
 /* Page Position */
 .main-container {
     position: absolute;
@@ -10,11 +19,14 @@
     height: 10%;
     border-bottom-style: solid;
     border-width: 1px;
+    background-color: #393E41;
 }
 .header-title {
     position: relative;
+    text-align: center;
     font-size: clamp(1.5rem, 3vw, 4rem);
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
 }
 /*side bar*/
 .side-bar {
@@ -22,17 +34,21 @@
     border-right-style: solid;
     border-width: 1px;
     height: 94.5%;
-    width: 25%;
+    width: 20%;
 }
 .date-choice {
-    position: absolute;
+    position: relative;
     top: 10px;
 }
 .date-end {
+    position: relative;
     margin-left: 22px;
+    background-color: #F6F6F3;
 }
 .date-start {
+    position: relative;
     margin-left: 15px;
+    background-color: #F6F6F3;
 }
 .data-label {
     margin-left: 7px;
@@ -48,18 +64,21 @@
 .body-container{
     position: absolute;
     top: 10%;
-    width: 80%;
+    width: 100%;
     height: 90%;
+    /* background-color: #F6F5F4; */
+    background-color: #BFB8B0;
 } 
 .chart-container {
     position: relative;
     margin: auto;
     border-style: solid;
     border-width: 1px;
-    left: 25%;
+    left: 10%;
     top: 3%;
     height: 89%;
-    width: 96%;
+    width: 75%;
+    background-color: #F6F6F3;
   }
   .canvas-container {
       position: relative;
@@ -85,4 +104,6 @@
     text-align: center;
     border-top-style: solid;
     border-width: 1px;
+    background-color: #393E41;
+    color: white;
 }
