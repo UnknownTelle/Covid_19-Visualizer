@@ -19,21 +19,21 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
     const val = req.body.value
-    dataPromise().then((result) => {console.log(result);})
-    res.json({
+    dataPromise().then((result) => {
+        res.json({
         sataus: 'success',
-        value: 'change'
+        value: result
+        })
     });
 })
-
 // attempt to move to its own file
-function dataPromise() {
+async function dataPromise() {
     return new Promise((res, rej) => {
         let results = [];
         fs.createReadStream(path.join(__dirname, '/server/data/UK_data.csv'))
             .pipe(csv())
-            .on('data', (row) => {results.push(row)})
-            .on('end', () => {res(results)})
+            .on('data', (row) => { results.push(row) })
+            .on('end', () => { res(results) })
     })
 }
 
