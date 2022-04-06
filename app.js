@@ -21,8 +21,7 @@ app.post('/', (req, res) => {
     const val = req.body.value
     getData(val).then((result) => {
         res.json({
-            sataus: 'success',
-            value: result
+            data: result
         })
     });
 })
