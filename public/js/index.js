@@ -1,6 +1,8 @@
-document.getElementById('data-select').addEventListener('change', function () {
+const selectValue = document.getElementById('data-select');
+selectValue.addEventListener('change', function() {
     dataPost(this.value);
-});
+    console.log(this.value);
+})
 const dataPost = async (value) => {
     const data = { value }
     const options = {
