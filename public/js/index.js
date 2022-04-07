@@ -13,5 +13,13 @@ const dataPost = async (value) => {
     };
     const res = await fetch('/', options)
     const response = await res.json();
-    console.log(response);
+
+    let date = []
+    let newValue = []
+    for (let i = 0; i < response.length; i++){
+        date.push(response[i].Day.date)
+        newValue.push(response[i].Day.value)
+    }
+    console.log(date)
+    console.log(newValue)
 }
