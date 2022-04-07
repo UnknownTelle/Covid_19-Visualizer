@@ -1,5 +1,3 @@
-// video using https://www.youtube.com/watch?v=185_Ofuq7T0&ab_channel=ChartJS
-
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
@@ -12,7 +10,6 @@ let chart ;
 let chartData = [];
 async function drawChart(chartChoice) {
     // Setup Block
-    const covidData = await sortFile();
     const data = {
         labels: covidData.date,
         datasets: [
