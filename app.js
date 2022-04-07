@@ -20,9 +20,7 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
     const val = req.body.value
     getData(val).then((result) => {
-        res.json({
-            data: result
-        })
+        res.json(result)
     });
 })
 
