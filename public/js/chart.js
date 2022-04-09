@@ -1,98 +1,17 @@
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-let chart ;
+
+let chart;
 let chartData = [];
-async function drawChart(chartChoice) {
+
+// function to make the chart.js carts
+async function drawChart(chartChoice, date) {
     // Setup Block
     const data = {
-        labels: covidData.date,
-        datasets: [
-            // {
-            //     label: 'Total Cases',
-            //     backgroundColor: getRandomColor(),
-            //     fill: false,
-            //     data: covidData.total_cases,
-            // },
-            // {
-            //     label: 'New Cases',
-            //     backgroundColor: getRandomColor(),
-            //     fill: false,
-            //     data: covidData.new_cases,
-            // },
-            // {
-            //     label: 'New Cases Smoothed',
-            //     backgroundColor: getRandomColor(),
-            //     fill: false,
-            //     data: covidData.new_cases_smoothed,
-            // },
-            // {
-            //     label: 'Total Deaths',
-            //     backgroundColor: getRandomColor(),
-            //     fill: false,
-            //     data: covidData.total_deaths,
-            // },
-            // {
-            //     label: 'New Deaths',
-            //     backgroundColor: getRandomColor(),
-            //     fill: false,
-            //     data: covidData.new_deaths,
-            // },
-            // {
-            //     label: 'New Deaths Smoothed',
-            //     backgroundColor: getRandomColor(),
-            //     fill: false,
-            //     data: covidData.new_deaths_smoothed,
-            // },
-            // {
-            //     label: 'Total Cases Per Million',
-            //     backgroundColor: getRandomColor(),
-            //     fill: false,
-            //     data: covidData.total_cases_per_million,
-            // },
-            // {
-            //     label: 'New Cases Per Million',
-            //     backgroundColor: getRandomColor(),
-            //     fill: false,
-            //     data: covidData.new_cases_per_million,
-            // },
-            // {
-            //     label: 'New Cases Smoothed Per Million',
-            //     backgroundColor: getRandomColor(),
-            //     fill: false,
-            //     data: covidData.new_cases_smoothed_per_million,
-            // },
-            // {
-            //     label: 'Total Deaths Per Milllion',
-            //     backgroundColor: getRandomColor(),
-            //     fill: false,
-            //     data: covidData.total_deaths_per_million,
-            // },
-            // {
-            //     label: 'New Deaths Per Million',
-            //     backgroundColor: getRandomColor(),
-            //     fill: false,
-            //     data: covidData.new_deaths_per_million,
-            // },
-            // {
-            //     label: 'New Deaths Smoothed Per Million',
-            //     backgroundColor: getRandomColor(),
-            //     fill: false,
-            //     data: covidData.new_deaths_smoothed_per_million,
-            // },
-            // {
-            //     label: 'Reproduction Rate',
-            //     backgroundColor: getRandomColor(),
-            //     fill: false,
-            //     data: covidData.reproduction_rate,
-            // },
-        ]
-    }
+        labels: date,
+        datasets: [{
+            label: '',
+            data: []
+        }]
+    }  
     // Config Block
     const config = {
         type: chartChoice,
@@ -101,18 +20,22 @@ async function drawChart(chartChoice) {
             maintainAspectRatio: false,
             responsive: true,
             legend: {
-                position: 'false',
+                position: 'top',
             },
             scales: {
-                xAxes: [{
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'month',
+                    },
+                },
+                y: {
                     ticks: {
-                        autoSkip: true,
-                        maxTicksLimit: 20
+                        beginAtZero: true
                     }
-                }]
-            },
-        },
-          
+                }
+            }
+        }
     }
     // Render Block
     chart = new Chart(
@@ -121,29 +44,27 @@ async function drawChart(chartChoice) {
     )
 }
 
+// Add new datasets to chart
+const addData = (date, value, label) => {
+    // Need to find a way to add data within newDatasets
+    const newDataset = {
+        labels: date,
+        label: label,
+        data: value
+    }
+    chart.data.datasets.push(newDataset);
+    chart.update();
+}
+
 // changes the chart type object
 const chartType = (type) => {
     chart.destroy();
-    switch(type) {
+    switch (type) {
         case 'bar':
             drawChart('bar');
-          break;
+            break;
         case 'line':
             drawChart('line');
-          break;
-      }
+            break;
+    }
 }
-
-// async function addData(dataName) {
-//     const gettingData = await sortFile();
-//     console.log('this is dateName val ' + dataName)
-//     switch(dataName) {
-//         case 'total_cases':
-//             chart.data.datasets.data.push(gettingData.total_cases)
-//     }
-//     //chart.data.labels.push(gettingData.date); // This push label
-//     chart.data.datasets.forEach((dataset) => {
-//         dataset.data.push(gettingData.reproduction_rate) // This is not pushing anything
-//     });
-//     chart.update();
-// }
