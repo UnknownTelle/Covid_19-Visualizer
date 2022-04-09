@@ -50,7 +50,7 @@ module.exports = function getData(val) {
                         value = row.reproduction_rate ;
                         break;
                 }
-                results.push({"Day":{"date": row.date, value}})
+                results.push({date: row.date, value})
             })
             .on('end', () => { res(results) })
     })
