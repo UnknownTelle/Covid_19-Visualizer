@@ -1,11 +1,3 @@
-/* colour schem 
-Header / Footer = #393E41
-Text = White
-background = #BFB8B0
-Sidebar =
-Chart = 
-*/
-
 
 /* Page Position */
 .main-container {
@@ -38,27 +30,55 @@ Chart =
 }
 .date-choice {
     position: relative;
-    top: 10px;
+    top: 3%;
+    left: 3.5%;
+    width: 85%;
 }
-.date-end {
+.date-input-start{
     position: relative;
-    margin-left: 22px;
+    width: 65%;
+    margin-left: 2%;
     background-color: #F6F6F3;
 }
-.date-start {
+.date-input-end{
     position: relative;
-    margin-left: 15px;
+    width: 65%;
+    margin-left: 5%;
     background-color: #F6F6F3;
 }
 .data-label {
-    margin-left: 7px;
-    font-size: 20px;
+    margin-left: 3%;
+    font-size: 18px;
+    font-weight: bold;
 }
-.metrix-choice {
-    position: absolute;
-    top: 16%;
-    left: 8px;
+.checkbox-container{
+    position: relative;
+    top: 5%;
+    left: 2%;
     width: 93%;
+    height: 80%;
+    overflow-y: scroll;
+}
+.checkbox-input {
+    position: relative;
+    left: 5%;
+}
+.checkbox-label{
+    position: relative;
+    width: 80%;
+    left: 5%;
+    border-bottom: 1px solid #ccc;
+    padding-left: 2%;
+    padding-bottom: 2%;
+}
+.checkbox-input:checked + .checkbox-label{
+    font-weight: bold;
+}
+.checkbox-header {
+    position: relative;
+    left: 5%;
+    font-size: 18px;
+    font-weight: bold;
 }
 /*body*/
 .body-container{
@@ -66,8 +86,7 @@ Chart =
     top: 10%;
     width: 100%;
     height: 90%;
-    /* background-color: #F6F5F4; */
-    background-color: #BFB8B0;
+    background-color: #e1e1f0;
 } 
 .chart-container {
     position: relative;
@@ -102,6 +121,7 @@ Chart =
     width: 100%;
     height: 5%;
     text-align: center;
+    font-size: 20px;
     border-top-style: solid;
     border-width: 1px;
     background-color: #393E41;
