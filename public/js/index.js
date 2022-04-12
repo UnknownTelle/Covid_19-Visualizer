@@ -4,7 +4,7 @@ const getValue = (object) => {
     if (object.checked){
         dataPost(object.value);
     } else {
-        console.log(object.value);
+        removeData(object.value)
     }
 }
 
