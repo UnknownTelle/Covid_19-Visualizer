@@ -1,8 +1,12 @@
-// gets value of select box and sends to datePost function
-const selectValue = document.getElementById('data-select');
-selectValue.addEventListener('change', function () {
-    dataPost(this.value);
-})
+
+// gets value of selected checkbox 
+const getValue = (object) => {
+    if (object.checked){
+        dataPost(object.value);
+    } else {
+        console.log(object.value);
+    }
+}
 
 // sends a request to server and receives responce
 const dataPost = async (value) => {
