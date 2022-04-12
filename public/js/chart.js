@@ -19,8 +19,10 @@ async function drawChart(chartChoice, date) {
         options: {
             maintainAspectRatio: false,
             responsive: true,
-            legend: {
-                position: 'top',
+            plugins: {
+                legend: {
+                    display: false
+                }
             },
             scales: {
                 x: {
@@ -29,11 +31,6 @@ async function drawChart(chartChoice, date) {
                         unit: 'month',
                     },
                 },
-                y: {
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }
             }
         }
     }
@@ -56,14 +53,24 @@ const addData = (date, value, label) => {
     chart.update();
 }
 
+// Remove datasets from chart
+const removeData = (value) => {
+    const index = chart.data.datasets.indexOf(value);
+    chart.data.datasets.splice(index, 1)
+    chart.update();
+}
+
 // changes the chart type object
-const chartType = (type) => {
+const chartType = async (type) => {
     chart.destroy();
+    let date;
     switch (type) {
         case 'bar':
-            drawChart('bar');
+            date = await dataPost();
+            drawChart('bar', date);
             break;
         case 'line':
+            date = await dataPost();
             drawChart('line');
             break;
     }
