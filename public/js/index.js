@@ -41,7 +41,7 @@ const extractData = (data, label) => {
     if (label != null){
         addData(date, value, label)
     } else {
-        drawChart('line', date);
+        drawChart(date);
     }
 }
 
