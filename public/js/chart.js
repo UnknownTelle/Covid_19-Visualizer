@@ -64,7 +64,7 @@ const addData = (date, value, label) => {
 
 // Remove datasets from chart
 const removeData = (value) => {
-    const index = chart.data.datasets.indexOf(value);
+    const index = chart.data.datasets.findIndex(x => x.label === value);
     chart.data.datasets.splice(index, 1)
     chart.update();
 }
@@ -82,7 +82,7 @@ const chartType = async (type) => {
             break;
     }
 }
-// generate a colour for new datasets being added
+// generate a colour for new datasets being added 
 const generateColour = () => {
     var letters = '0123456789ABCDEF';
     var color = '#';
