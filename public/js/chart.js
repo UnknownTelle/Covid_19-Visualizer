@@ -1,20 +1,18 @@
 
 let chart;
-let chartData = [];
-
 // function to make the chart.js carts
-async function drawChart(chartChoice, date) {
+async function drawChart(date) {
     // Setup Block
     const data = {
         labels: date,
         datasets: [{
             label: '',
-            data: []
+            data: [],
         }]
-    }  
+    }
     // Config Block
     const config = {
-        type: chartChoice,
+        type: 'line',
         data: data,
         options: {
             maintainAspectRatio: false,
@@ -22,7 +20,15 @@ async function drawChart(chartChoice, date) {
             plugins: {
                 legend: {
                     display: false
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false
                 }
+            },
+            hover: {
+                mode: 'nearest',
+                intersect: true
             },
             scales: {
                 x: {
@@ -34,6 +40,7 @@ async function drawChart(chartChoice, date) {
             }
         }
     }
+    
     // Render Block
     chart = new Chart(
         document.getElementById('chart'),
@@ -47,7 +54,7 @@ const addData = (date, value, label) => {
     const newDataset = {
         labels: date,
         label: label,
-        data: value
+        data: value,
     }
     chart.data.datasets.push(newDataset);
     chart.update();
@@ -62,16 +69,14 @@ const removeData = (value) => {
 
 // changes the chart type object
 const chartType = async (type) => {
-    chart.destroy();
-    let date;
     switch (type) {
         case 'bar':
-            date = await dataPost();
-            drawChart('bar', date);
+            chart.config.type = 'bar'
+            chart.update()
             break;
         case 'line':
-            date = await dataPost();
-            drawChart('line');
+            chart.config.type = 'line'
+            chart.update()
             break;
     }
 }
