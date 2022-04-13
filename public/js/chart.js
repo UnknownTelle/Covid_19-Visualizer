@@ -8,6 +8,7 @@ async function drawChart(date) {
         datasets: [{
             label: '',
             data: [],
+            backgroundColor: '',
         }]
     }
     // Config Block
@@ -55,6 +56,7 @@ const addData = (date, value, label) => {
         labels: date,
         label: label,
         data: value,
+        backgroundColor: generateColour()
     }
     chart.data.datasets.push(newDataset);
     chart.update();
@@ -79,4 +81,14 @@ const chartType = async (type) => {
             chart.update()
             break;
     }
+}
+// generate a colour for new datasets being added
+const generateColour = () => {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    let result;
+    for (var i = 0; i < 6; i++) {
+        result = color += letters[Math.floor(Math.random() * 16)];
+    }
+    return result;
 }
