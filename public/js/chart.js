@@ -1,6 +1,5 @@
-
+// add file description
 let chart;
-// function to make the chart.js carts
 async function drawChart(date) {
     // Setup Block
     const data = {
@@ -9,6 +8,7 @@ async function drawChart(date) {
             label: '',
             data: [],
             backgroundColor: '',
+            borderColor: ''
         }]
     }
     // Config Block
@@ -51,34 +51,52 @@ async function drawChart(date) {
 
 // Add new datasets to chart
 const addData = (date, value, label) => {
-    // Need to find a way to add data within newDatasets
+    const color = generateColour();
     const newDataset = {
         labels: date,
         label: label,
         data: value,
-        backgroundColor: generateColour()
+        backgroundColor: color,
+        borderColor: color
     }
     chart.data.datasets.push(newDataset);
     chart.update();
+    updateTable();
 }
 
 // Remove datasets from chart
 const removeData = (value) => {
+    // gets index from array
     const index = chart.data.datasets.findIndex(x => x.label === value);
+    // removes data using the index value
     chart.data.datasets.splice(index, 1)
     chart.update();
+    updateTable();
 }
 
 // changes the chart type object
 const chartType = async (type) => {
+    const canvas = document.getElementById('chart');
+    const table = document.getElementById('table');
     switch (type) {
         case 'bar':
+            canvas.style.visibility = 'visible';
+            table.style.visibility = 'hidden';
+            removeTable('tableBody');
             chart.config.type = 'bar'
             chart.update()
             break;
         case 'line':
+            canvas.style.visibility = 'visible';
+            table.style.visibility = 'hidden';
+            removeTable('tableBody');
             chart.config.type = 'line'
             chart.update()
+            break;
+        case 'table':
+            canvas.style.visibility = 'hidden';
+            table.style.visibility = 'visible';
+            buildTable()
             break;
     }
 }
