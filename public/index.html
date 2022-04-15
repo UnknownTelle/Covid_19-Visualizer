@@ -30,79 +30,81 @@
         <div class="side-bar">
             <div class="date-choice">
                 <label class="data-label" for="start">Start date:</label>
-                <input class="date-input-start" type="date" id="start" name="trip-start" value="2020-01-02" min="2020-01-02"
-                    max="2020-12-31"> <br>
+                <input class="date-input-start" type="date" id="start_date" name="trip-start" value="2020-01-31"
+                    min="2020-01-31" max="2020-12-31" onchange="filterData()"> <br>
                 <label class="data-label" for="end">End date:</label>
-                <input class="date-input-end" type="date" id="start" name="trip-start" value="2020-12-31" min="2020-01-03"
-                    max="2020-12-31">
+                <input class="date-input-end" type="date" id="end_date" name="trip-start" value="2020-12-31"
+                    min="2020-01-03" max="2020-12-31" onchange="filterData()">
             </div>
             <div class="checkbox-container" id="checkbox-container">
-                    <label class="checkbox-header">Cases</label><br>
-                    <input class="checkbox-input" type="checkbox" id="total_cases" value="total_cases"
-                        onclick="getValue(this)">
-                    <label class="checkbox-label" for="total_cases">Total Cases</label> <br>
+                <label class="checkbox-header">Cases</label><br>
+                <input class="checkbox-input" type="checkbox" id="total_cases" value="total_cases"
+                    onclick="getValue(this)">
+                <label class="checkbox-label" for="total_cases">Total Cases</label> <br>
 
-                    <input class="checkbox-input" type="checkbox" id="new_cases" value="new_cases"
-                        onclick="getValue(this)">
-                    <label class="checkbox-label" for="new_cases">New Cases</label><br>
+                <input class="checkbox-input" type="checkbox" id="new_cases" value="new_cases" onclick="getValue(this)">
+                <label class="checkbox-label" for="new_cases">New Cases</label><br>
 
-                    <input class="checkbox-input" type="checkbox" id="new_cases_smoothed" value="new_cases_smoothed"
-                        onclick="getValue(this)">
-                    <label class="checkbox-label" for="new_cases_smoothed">New Cases Smoothed</label><br>
+                <input class="checkbox-input" type="checkbox" id="new_cases_smoothed" value="new_cases_smoothed"
+                    onclick="getValue(this)">
+                <label class="checkbox-label" for="new_cases_smoothed">New Cases Smoothed</label><br>
 
-                    <input class="checkbox-input" type="checkbox" id="total_cases_per_million"
-                        value="total_cases_per_million" onclick="getValue(this)">
-                    <label class="checkbox-label" for="total_cases_per_million">Total Cases Per Million</label><br>
+                <input class="checkbox-input" type="checkbox" id="total_cases_per_million"
+                    value="total_cases_per_million" onclick="getValue(this)">
+                <label class="checkbox-label" for="total_cases_per_million">Total Cases Per Million</label><br>
 
-                    <input class="checkbox-input" type="checkbox" id="new_cases_per_million"
-                        value="new_cases_per_million" onclick="getValue(this)">
-                    <label class="checkbox-label" for="new_cases_per_million">New Cases Per Million</label><br>
+                <input class="checkbox-input" type="checkbox" id="new_cases_per_million" value="new_cases_per_million"
+                    onclick="getValue(this)">
+                <label class="checkbox-label" for="new_cases_per_million">New Cases Per Million</label><br>
 
-                    <input class="checkbox-input" type="checkbox" id="new_cases_smoothed_per_million"
-                        value="new_cases_smoothed_per_million" onclick="getValue(this)">
-                    <label class="checkbox-label" for="new_cases_smoothed_per_million">New Cases Smoothed Per
-                        Million</label><br>
+                <input class="checkbox-input" type="checkbox" id="new_cases_smoothed_per_million"
+                    value="new_cases_smoothed_per_million" onclick="getValue(this)">
+                <label class="checkbox-label" for="new_cases_smoothed_per_million">New Cases Smoothed Per
+                    Million</label><br>
 
-                    <label class="checkbox-header">Deaths</label><br>
+                <label class="checkbox-header">Deaths</label><br>
 
-                    <input class="checkbox-input" type="checkbox" id="total_deaths" value="total_deaths"
-                        onclick="getValue(this)">
-                    <label class="checkbox-label" for="total_deaths">Total Deaths</label><br>
+                <input class="checkbox-input" type="checkbox" id="total_deaths" value="total_deaths"
+                    onclick="getValue(this)">
+                <label class="checkbox-label" for="total_deaths">Total Deaths</label><br>
 
-                    <input class="checkbox-input" type="checkbox" id="new_deaths" value="new_deaths"
-                        onclick="getValue(this)">
-                    <label class="checkbox-label" for="new_deaths">New Deaths</label><br>
+                <input class="checkbox-input" type="checkbox" id="new_deaths" value="new_deaths"
+                    onclick="getValue(this)">
+                <label class="checkbox-label" for="new_deaths">New Deaths</label><br>
 
-                    <input class="checkbox-input" type="checkbox" id="new_deaths_smoothed" value="new_deaths_smoothed"
-                        onclick="getValue(this)">
-                    <label class="checkbox-label" for="new_deaths_smoothed">New Deaths Smoothed</label><br>
+                <input class="checkbox-input" type="checkbox" id="new_deaths_smoothed" value="new_deaths_smoothed"
+                    onclick="getValue(this)">
+                <label class="checkbox-label" for="new_deaths_smoothed">New Deaths Smoothed</label><br>
 
-                    <input class="checkbox-input" type="checkbox" id="total_deaths_per_million"
-                        value="total_deaths_per_million" onclick="getValue(this)">
-                    <label class="checkbox-label" for="total_deaths_per_million">Total Deaths Per Million</label><br>
+                <input class="checkbox-input" type="checkbox" id="total_deaths_per_million"
+                    value="total_deaths_per_million" onclick="getValue(this)">
+                <label class="checkbox-label" for="total_deaths_per_million">Total Deaths Per Million</label><br>
 
-                    <input class="checkbox-input" type="checkbox" id="new_deaths_per_million"
-                        value="new_deaths_per_million" onclick="getValue(this)">
-                    <label class="checkbox-label" for="new_deaths_per_million">New Deaths Per Million</label><br>
+                <input class="checkbox-input" type="checkbox" id="new_deaths_per_million" value="new_deaths_per_million"
+                    onclick="getValue(this)">
+                <label class="checkbox-label" for="new_deaths_per_million">New Deaths Per Million</label><br>
 
-                    <input class="checkbox-input" type="checkbox" id="new_deaths_smoothed_per_million"
-                        value="new_deaths_smoothed_per_million" onclick="getValue(this)">
-                    <label class="checkbox-label" for="new_deaths_smoothed_per_million">New Deaths Smoothed Per
-                        Million</label><br>
+                <input class="checkbox-input" type="checkbox" id="new_deaths_smoothed_per_million"
+                    value="new_deaths_smoothed_per_million" onclick="getValue(this)">
+                <label class="checkbox-label" for="new_deaths_smoothed_per_million">New Deaths Smoothed Per
+                    Million</label><br>
 
-                    <input class="checkbox-input" type="checkbox" id="reproduction_rate" value="reproduction_rate"
-                        onclick="getValue(this)">
-                    <label class="checkbox-label" for="reproduction_rate">Reproduction Rate</label><br>
+                <input class="checkbox-input" type="checkbox" id="reproduction_rate" value="reproduction_rate"
+                    onclick="getValue(this)">
+                <label class="checkbox-label" for="reproduction_rate">Reproduction Rate</label><br>
             </div>
         </div>
         <div class="chart-container">
             <div class="canvas-container">
                 <canvas id="chart"></canvas>
             </div>
+            <div class="table-container">
+                <table id="table" class="table"></table>
+            </div>
             <button class="chart-button" onclick="chartType('bar')">Bar</button>
             <button class="chart-button" onclick="chartType('line')">Line</button>
             <button class="chart-button">Calendar</button>
-            <button class="chart-button">Table</button>
+            <button class="chart-button" onclick="chartType('table')">Table</button>
         </div>
     </div>
     <!-- Footer -->
@@ -112,6 +114,7 @@
     </div>
     <script src="js/index.js"></script>
     <script src="js/chart.js"></script>
+    <script src="js/table.js"></script>
 </body>
 
 </html>
