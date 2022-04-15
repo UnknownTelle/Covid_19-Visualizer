@@ -10,6 +10,9 @@ module.exports = function getData(val) {
             .on('data', (row) => {
                 let value;
                 switch (val) {
+                    case 'date':
+                        value = row.date;
+                        break;
                     case 'total_cases':
                         value = row.total_cases;
                         break;
@@ -50,7 +53,7 @@ module.exports = function getData(val) {
                         value = row.reproduction_rate ;
                         break;
                 }
-                results.push({date: row.date, value})
+                results.push(value)
             })
             .on('end', () => { res(results) })
     })
