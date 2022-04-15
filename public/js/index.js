@@ -10,7 +10,6 @@ const getValue = (object) => {
 
 // sends a request to server and receives responce
 const dataPost = async (value, key) => {
-    console.log(value)
     const data = { value }
     // specify the type of request and places data in request
     const options = {

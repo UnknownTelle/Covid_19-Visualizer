@@ -126,11 +126,11 @@ const filterByDate = async () => {
     for (var i = 0; i < datasets.length; i++){
         // gets the lable value and places into an array
         const label = datasets[i].label
+        // call for the entire dataset again
         const data = await dataPost(label, 'filterByDate');
-        console.log(data);
+        // filters that dataset
         const filterDateValue = data.slice(indexOfStartDate, indexOfEndDate + 1);
-        console.log('filer data')
-        console.log(filterDateValue)
+        // replace the dataset
         chart.config.data.datasets[i].data = filterDateValue;
     }
     // Replace the array with new filter arrays
