@@ -12,6 +12,7 @@ const buildTable = () => {
     // gets table object and creates content within
     const table = document.getElementById('table');
     const tableBody = document.createElement('tbody');
+    tableBody.setAttribute('id', 'tableBody');
     // create row depending on dateset length
     for (var i = 0; i < dataset.length; i++) {
         const row = document.createElement('tr')
@@ -53,4 +54,19 @@ const buildTable = () => {
         tableBody.appendChild(row);
     }
      table.appendChild(tableBody);
+}
+
+// remove table
+const removeTable = () => {
+    const table = document.getElementById('tableBody');
+    if (table) {table.parentNode.removeChild(table)}
+}
+
+// check if table exsits
+const updateTable = () => {
+    const table = document.getElementById('tableBody');
+    if (table != null){
+        removeTable('tableBody');
+        buildTable()
+    }
 }
