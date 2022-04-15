@@ -50,18 +50,16 @@ async function drawChart(date) {
 }
 
 // Add new datasets to chart
-const addData = (date, value, label) => {
+const addData = (value, label) => {
     const color = generateColour();
     const newDataset = {
-        labels: date,
         label: label,
         data: value,
         backgroundColor: color,
         borderColor: color
     }
     chart.data.datasets.push(newDataset);
-    chart.update();
-    updateTable();
+    filterByDate();
 }
 
 // Remove datasets from chart
@@ -109,4 +107,34 @@ const generateColour = () => {
         result = color += letters[Math.floor(Math.random() * 16)];
     }
     return result;
+}
+
+const filterByDate = async () => {
+    // Get current inputted date values
+    const startDate = document.getElementById('start_date').value;
+    const endDate = document.getElementById('end_date').value;
+
+    const dates = await dataPost('date', 'filterByDate');
+    // gets index of the array using the inputted date values
+    const indexOfStartDate = dates.findIndex(sd => sd === startDate);
+    const indexOfEndDate = dates.findIndex(ed => ed === endDate);
+    // filter the dates array based on the index value
+    const filterDate = dates.slice(indexOfStartDate, indexOfEndDate + 1);
+    // Gets current datasets data
+    const datasets = [...chart.data.datasets]
+    // gets datasets data based on index
+    for (var i = 0; i < datasets.length; i++){
+        // gets the lable value and places into an array
+        const label = datasets[i].label
+        const data = await dataPost(label, 'filterByDate');
+        console.log(data);
+        const filterDateValue = data.slice(indexOfStartDate, indexOfEndDate + 1);
+        console.log('filer data')
+        console.log(filterDateValue)
+        chart.config.data.datasets[i].data = filterDateValue;
+    }
+    // Replace the array with new filter arrays
+    chart.config.data.labels = filterDate;
+    chart.update();
+    updateTable();
 }
