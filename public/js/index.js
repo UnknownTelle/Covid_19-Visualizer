@@ -9,7 +9,8 @@ const getValue = (object) => {
 }
 
 // sends a request to server and receives responce
-const dataPost = async (value) => {
+const dataPost = async (value, key) => {
+    console.log(value)
     const data = { value }
     // specify the type of request and places data in request
     const options = {
@@ -22,27 +23,25 @@ const dataPost = async (value) => {
     const res = await fetch('/', options)
     // gets servers responce
     const response = await res.json();
-
-    extractData(response, value)
-}
-
-const extractData = (data, label) => {
-    let date = []
-    let value = []
-
-    // Place date and value in its own array 
-    for (let i = 0; i < data.length; i++) {
-        // formats date to yyyy-mm-dd and place into date array
-        date.push(data[i].date.split('/').reverse().join('-'))
-        // places value object into newValue array
-        value.push(data[i].value)
-    }
-    // chack to see if its an onload call
-    if (label != null){
-        addData(date, value, label)
+    // sends to the right function
+    if (value == 'date'){
+        let dates = [];
+        for (let i = 0; i < response.length; i++) {
+            // formats date to yyyy-mm-dd and place into date array
+            dates.push(response[i].split('/').reverse().join('-'))
+        }
+        if (key == 'filterByDate'){
+            return dates;
+        } else {
+            drawChart(dates);
+        }
     } else {
-        drawChart(date);
+        if (key == 'filterByDate'){
+            return response;
+        } else {
+            addData(response, value)
+        }
     }
 }
 
-window.onload = dataPost()
+window.onload = dataPost('date')
