@@ -83,7 +83,7 @@ const filterByDate = async () => {
     const endDate = document.getElementById('end_date').value;
 
     // Gets the dates and filter them depending on inputted data
-    const dates = await getData('date', 'filterByDate'); // Get dates
+    const dates = await getData('date', 'return'); // Get dates
     const indexOfStartDate = dates.findIndex(sd => sd === startDate); // Get indexs
     const indexOfEndDate = dates.findIndex(ed => ed === endDate); // Get indexs
     const filterDate = dates.slice(indexOfStartDate, indexOfEndDate + 1); // Filter
@@ -93,7 +93,7 @@ const filterByDate = async () => {
     const datasets = [...chart.data.datasets] // Copy chart data
     for (var i = 0; i < datasets.length; i++){
         const label = datasets[i].label // Get lable
-        const data = await getData(label, 'filterByDate'); // Gets data using lable
+        const data = await getData(label, 'return'); // Gets data using lable
         const filterDateValue = data.slice(indexOfStartDate, indexOfEndDate + 1); // Filter data
         chart.config.data.datasets[i].data = filterDateValue; // Replace data
     }

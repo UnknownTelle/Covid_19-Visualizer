@@ -24,7 +24,7 @@ const getData = async (value, key) => {
                 dates.push(response[i].split('/').reverse().join('-')) // Format date
             }
             // Check who to send data to
-            if (key == 'filterByDate') {
+            if (key == 'return') {
                 return dates;
             } else {
                 drawChart(dates);
@@ -32,7 +32,7 @@ const getData = async (value, key) => {
             break;
         default:
             // Check who to send data to
-            if (key == 'filterByDate') {
+            if (key == 'return') {
                 return response;
             } else {
                 addData(response, value)
@@ -70,7 +70,7 @@ const diplayChart = async (type) => {
 
 // Gets the value and sends to the correct function
 const checkboxValue = (cbValue) => {
-    if (object.checked) {
+    if (cbValue.checked) {
         getData(cbValue.value);
     } else {
         removeData(cbValue.value)
