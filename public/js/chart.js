@@ -1,4 +1,10 @@
-// add file description
+/*-----------------------------------------------------------------
+Description: This javaScript file takes care of the line and bar
+charts. Within this file you will also have the add data, 
+remove data and filter data methods.
+------------------------------------------------------------------*/
+
+// Create chart
 let chart;
 async function drawChart(date) {
     // Setup Block
@@ -49,92 +55,48 @@ async function drawChart(date) {
     )
 }
 
-// Add new datasets to chart
+// Adds new data
 const addData = (value, label) => {
     const color = generateColour();
-    const newDataset = {
+    const newDataset = { 
         label: label,
         data: value,
         backgroundColor: color,
         borderColor: color
     }
-    chart.data.datasets.push(newDataset);
-    filterByDate();
+    chart.data.datasets.push(newDataset); // Push new data
+    filterByDate(); // Check to see if dates are correct
 }
 
-// Remove datasets from chart
+// Remove exsiting data
 const removeData = (value) => {
-    // gets index from array
-    const index = chart.data.datasets.findIndex(x => x.label === value);
-    // removes data using the index value
-    chart.data.datasets.splice(index, 1)
+    const index = chart.data.datasets.findIndex(x => x.label === value); // Get index
+    chart.data.datasets.splice(index, 1) // Remove by index
     chart.update();
     updateTable();
 }
 
-// changes the chart type object
-const chartType = async (type) => {
-    const canvas = document.getElementById('chart');
-    const table = document.getElementById('table');
-    switch (type) {
-        case 'bar':
-            canvas.style.visibility = 'visible';
-            table.style.visibility = 'hidden';
-            removeTable('tableBody');
-            chart.config.type = 'bar'
-            chart.update()
-            break;
-        case 'line':
-            canvas.style.visibility = 'visible';
-            table.style.visibility = 'hidden';
-            removeTable('tableBody');
-            chart.config.type = 'line'
-            chart.update()
-            break;
-        case 'table':
-            canvas.style.visibility = 'hidden';
-            table.style.visibility = 'visible';
-            buildTable()
-            break;
-    }
-}
-// generate a colour for new datasets being added 
-const generateColour = () => {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    let result;
-    for (var i = 0; i < 6; i++) {
-        result = color += letters[Math.floor(Math.random() * 16)];
-    }
-    return result;
-}
-
+// Filters the data displayed by the inputted dates
 const filterByDate = async () => {
     // Get current inputted date values
     const startDate = document.getElementById('start_date').value;
     const endDate = document.getElementById('end_date').value;
 
-    const dates = await dataPost('date', 'filterByDate');
-    // gets index of the array using the inputted date values
-    const indexOfStartDate = dates.findIndex(sd => sd === startDate);
-    const indexOfEndDate = dates.findIndex(ed => ed === endDate);
-    // filter the dates array based on the index value
-    const filterDate = dates.slice(indexOfStartDate, indexOfEndDate + 1);
-    // Gets current datasets data
-    const datasets = [...chart.data.datasets]
-    // gets datasets data based on index
+    // Gets the dates and filter them depending on inputted data
+    const dates = await getData('date', 'filterByDate'); // Get dates
+    const indexOfStartDate = dates.findIndex(sd => sd === startDate); // Get indexs
+    const indexOfEndDate = dates.findIndex(ed => ed === endDate); // Get indexs
+    const filterDate = dates.slice(indexOfStartDate, indexOfEndDate + 1); // Filter
+    chart.config.data.labels = filterDate; // Replace data
+
+    // Gets chart data and filters it depending on inputted data
+    const datasets = [...chart.data.datasets] // Copy chart data
     for (var i = 0; i < datasets.length; i++){
-        // gets the lable value and places into an array
-        const label = datasets[i].label
-        // call for the entire dataset again
-        const data = await dataPost(label, 'filterByDate');
-        // filters that dataset
-        const filterDateValue = data.slice(indexOfStartDate, indexOfEndDate + 1);
-        // replace the dataset
-        chart.config.data.datasets[i].data = filterDateValue;
+        const label = datasets[i].label // Get lable
+        const data = await getData(label, 'filterByDate'); // Gets data using lable
+        const filterDateValue = data.slice(indexOfStartDate, indexOfEndDate + 1); // Filter data
+        chart.config.data.datasets[i].data = filterDateValue; // Replace data
     }
-    // Replace the array with new filter arrays
-    chart.config.data.labels = filterDate;
     chart.update();
     updateTable();
 }
