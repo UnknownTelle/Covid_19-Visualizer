@@ -47,7 +47,7 @@ async function drawChart(date) {
             }
         }
     }
-    
+
     // Render Block
     chart = new Chart(
         document.getElementById('chart'),
@@ -56,15 +56,17 @@ async function drawChart(date) {
 }
 
 // Adds new data
-const addData = (value, label) => {
+const addData = async (key) => {
+    const data = await getData(key); // Gets data using lable
     const color = generateColour();
-    const newDataset = { 
-        label: label,
-        data: value,
+    const newDataset = {
+        label: key,
+        data: data,
         backgroundColor: color,
         borderColor: color
     }
     chart.data.datasets.push(newDataset); // Push new data
+    addRadarData(key);
     filterByDate(); // Check to see if dates are correct
 }
 
@@ -91,7 +93,7 @@ const filterByDate = async () => {
 
     // Gets chart data and filters it depending on inputted data
     const datasets = [...chart.data.datasets] // Copy chart data
-    for (var i = 0; i < datasets.length; i++){
+    for (var i = 0; i < datasets.length; i++) {
         const label = datasets[i].label // Get lable
         const data = await getData(label, 'return'); // Gets data using lable
         const filterDateValue = data.slice(indexOfStartDate, indexOfEndDate + 1); // Filter data
