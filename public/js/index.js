@@ -30,38 +30,41 @@ const getData = async (value, key) => {
                 drawChart(dates);
             }
             break;
-        default:
-            // Check who to send data to
-            if (key == 'return') {
-                return response;
-            } else {
-                addData(response, value)
-            }
-            break;
+        default: return response;
     }
 }
 
 // Changes the display depending on choice
 const diplayChart = async (type) => {
     const canvas = document.getElementById('chart');
+    const radar = document.getElementById('radar')
     const table = document.getElementById('table');
     switch (type) {
         case 'bar':
-            canvas.style.visibility = 'visible';
+            canvas.style.display = 'block';
+            radar.style.display = 'none';
             table.style.visibility = 'hidden';
             removeTable('tableBody');
             chart.config.type = 'bar'
             chart.update()
             break;
         case 'line':
-            canvas.style.visibility = 'visible';
+            canvas.style.display = 'block';
+            radar.style.display = 'none';
             table.style.visibility = 'hidden';
             removeTable('tableBody');
             chart.config.type = 'line'
             chart.update()
             break;
+        case 'radar':
+            canvas.style.display = 'none';
+            radar.style.display = 'block';
+            table.style.visibility = 'hidden';
+            removeTable('tableBody');
+            break;
         case 'table':
             canvas.style.visibility = 'hidden';
+            radar.style.display = 'none';
             table.style.visibility = 'visible';
             buildTable()
             break;
@@ -69,11 +72,11 @@ const diplayChart = async (type) => {
 }
 
 // Gets the value and sends to the correct function
-const checkboxValue = (cbValue) => {
-    if (cbValue.checked) {
-        getData(cbValue.value);
+const checkboxValue = (key) => {
+    if (key.checked) {
+        addData(key.value);
     } else {
-        removeData(cbValue.value)
+        removeData(key.value)
     }
 }
 
