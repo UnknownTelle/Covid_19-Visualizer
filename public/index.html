@@ -101,9 +101,12 @@
             <div class="canvas-container">
                 <canvas id="chart"></canvas>
             </div>
+            <div class="radar-canvas">
+                <canvas class="radar" id="radar" style="display: none;"></canvas>
+            </div>
             <button class="chart-button" onclick="diplayChart('bar')">Bar</button>
             <button class="chart-button" onclick="diplayChart('line')">Line</button>
-            <button class="chart-button">Calendar</button>
+            <button class="chart-button"onclick="diplayChart('radar')">Radar</button>
             <button class="chart-button" onclick="diplayChart('table')">Table</button>
         </div>
     </div>
@@ -115,6 +118,7 @@
     <script src="js/index.js"></script>
     <script src="js/chart.js"></script>
     <script src="js/table.js"></script>
+    <script src="js/radarChart.js"></script>
 </body>
 
 </html>

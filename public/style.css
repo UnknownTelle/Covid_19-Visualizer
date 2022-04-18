@@ -105,6 +105,18 @@
       height: 85%;
       width: 98%;
   }
+  .radar-canvas {
+    position: absolute;
+    top: 2%;
+    height: 85%;
+    width: 98%;
+}
+.radar {
+    position: relative;
+    width: 500px;
+    height: 350px;
+    left: 30%;
+}
   .table-container{
       position: absolute;
       height: 87%;
