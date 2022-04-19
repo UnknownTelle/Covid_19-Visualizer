@@ -10,7 +10,6 @@ const getData = async (value, key) => {
     // specify the type of request and places data in request
     const options = {
         method: 'POST',
-        mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     };
