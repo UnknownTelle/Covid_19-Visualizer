@@ -11,7 +11,7 @@ const buildTable = () => {
 
     // gets datasets from datesets array
     // gets table object and creates content within
-    const table = document.getElementById('table');
+    const table = document.getElementById('table-view');
     const tableBody = document.createElement('tbody');
     tableBody.setAttribute('id', 'tableBody');
 
