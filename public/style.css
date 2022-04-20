@@ -99,8 +99,8 @@
     width: 75%;
     background-color: #F6F6F3;
   }
-  .canvas-container {
-      position: relative;
+  .line_bar-container {
+      position: absolute;
       top: 5%;
       height: 85%;
       width: 98%;
@@ -110,9 +110,10 @@
     top: 2%;
     height: 85%;
     width: 98%;
+    display: none;
 }
 .radar {
-    position: relative;
+    position: absolute;
     width: 500px;
     height: 350px;
     left: 30%;
@@ -129,6 +130,13 @@
       position: absolute;
       font-size: 18px;
       text-align: center;
+      table-layout: fixed;
+  }
+  .empty-container {
+    position: relative;
+      top: 5%;
+      height: 85%;
+      width: 100%;
   }
 
 /*chart choice*/

@@ -95,19 +95,20 @@
             </div>
         </div>
         <div class="chart-container">
+            <div class="empty-container"></div>
             <div class="table-container">
-                <table id="table" class="table"></table>
+                <table id="table-view" class="table"></table>
             </div>
-            <div class="canvas-container">
+            <div class="radar-canvas" id="radar-canvas">
+                <canvas class="radar" id="radar-chart"></canvas>
+            </div>
+            <div class="line_bar-container" id="line_bar-container">
                 <canvas id="chart"></canvas>
             </div>
-            <div class="radar-canvas">
-                <canvas class="radar" id="radar" style="display: none;"></canvas>
-            </div>
-            <button class="chart-button" onclick="diplayChart('bar')">Bar</button>
-            <button class="chart-button" onclick="diplayChart('line')">Line</button>
-            <button class="chart-button"onclick="diplayChart('radar')">Radar</button>
-            <button class="chart-button" onclick="diplayChart('table')">Table</button>
+            <button class="chart-button" id="bar">Bar</button>
+            <button class="chart-button" id="line">Line</button>
+            <button class="chart-button" id="radar">Radar</button>
+            <button class="chart-button" id="table">Table</button>
         </div>
     </div>
     <!-- Footer -->
