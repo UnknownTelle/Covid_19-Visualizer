@@ -33,49 +33,54 @@ const getData = async (value, key) => {
     }
 }
 
-// Changes the display depending on choice
-const diplayChart = async (type) => {
-    const canvas = document.getElementById('chart');
-    const radar = document.getElementById('radar')
-    const table = document.getElementById('table');
-    switch (type) {
-        case 'bar':
-            canvas.style.display = 'block';
-            radar.style.display = 'none';
-            table.style.visibility = 'hidden';
-            removeTable('tableBody');
-            chart.config.type = 'bar'
-            chart.update()
-            break;
-        case 'line':
-            canvas.style.display = 'block';
-            radar.style.display = 'none';
-            table.style.visibility = 'hidden';
-            removeTable('tableBody');
-            chart.config.type = 'line'
-            chart.update()
-            break;
-        case 'radar':
-            canvas.style.display = 'none';
-            radar.style.display = 'block';
-            table.style.visibility = 'hidden';
-            removeTable('tableBody');
-            break;
-        case 'table':
-            canvas.style.visibility = 'hidden';
-            radar.style.display = 'none';
-            table.style.visibility = 'visible';
-            buildTable()
-            break;
+// Controlthe outcome of the chart choice buttons
+const lineBarCanvas = document.getElementById('line_bar-container');
+const radarCanvas = document.getElementById('radar-canvas')
+const tableView = document.getElementById('table-view');
+
+// Bar chart
+document.getElementById('bar').onclick = () => {
+    lineBarCanvas.style.display = 'block';
+    radarCanvas.style.display = 'none';
+    tableView.style.visibility = 'hidden';
+    removeTable('tableBody');
+    chart.config.type = 'bar'
+    chart.update()
+};
+// Line chart
+document.getElementById('line').onclick = () => {
+    lineBarCanvas.style.display = 'block';
+    radarCanvas.style.display = 'none';
+    tableView.style.visibility = 'hidden';
+    removeTable('tableBody');
+    chart.config.type = 'line'
+    chart.update()
+};
+// Rader chart
+document.getElementById('radar').onclick = () => {
+    const message = 'The Radar chart will only show the last day of the month data. Do you want to continue?'
+    if (confirm(message) == true) {
+        lineBarCanvas.style.display = 'none';
+        radarCanvas.style.display = 'block';
+        tableView.style.visibility = 'hidden';
+        removeTable('tableBody');
     }
-}
+};
+// Table view
+document.getElementById('table').onclick = () => {
+    lineBarCanvas.style.display = 'none';
+    radarCanvas.style.display = 'none';
+    tableView.style.visibility = 'visible';
+    buildTable()
+};
 
 // Gets the value and sends to the correct function
 const checkboxValue = (key) => {
     if (key.checked) {
         addData(key.value);
     } else {
-        removeData(key.value)
+        removeData(key.value);
+        removeRadarData(key.value);
     }
 }
 
