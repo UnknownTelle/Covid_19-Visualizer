@@ -5,13 +5,13 @@ Description: This javaScript file takes care of the radar chart
 // Create radar chart
 
 const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 
-    'July', 'August', 'September', 'October', 'November', 'December'],
+    labels: ['January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'],
     datasets: [{
         label: "",
         backgroundColor: "",
         data: []
-      }]
+    }]
 }
 // Config Block
 const config = {
@@ -23,9 +23,9 @@ const config = {
     }
 }
 const radarChart = new Chart(
-    document.getElementById('radar'),
+    document.getElementById('radar-chart'),
     config
-  );
+);
 
 const addRadarData = async (key) => {
     const dates = await getData('date', 'return'); // Get all dates
@@ -34,22 +34,24 @@ const addRadarData = async (key) => {
     lastDayDates.forEach(date => {
         dateIndex.push(dates.findIndex(di => di === date));
     });
-            let lastDaysData = [];
-            const data = await getData(key); // Gets data
-            dateIndex.forEach(index => {
-                lastDaysData.push(data[index])
-            })
-            const addData = {
-                label: key,
-                backgroundColor: '',
-                data: lastDaysData
-            }
-            radarChart.data.datasets.push(addData);
-            radarChart.update();
+    let lastDaysData = [];
+    const data = await getData(key); // Gets data
+    dateIndex.forEach(index => {
+        lastDaysData.push(data[index])
+    })
+    const addData = {
+        label: key,
+        backgroundColor: '',
+        data: lastDaysData
+    }
+    radarChart.data.datasets.push(addData);
+    radarChart.update();
 }
 // Remove data
-const removeRadarData = () => {
-
+const removeRadarData = (value) => {
+    const index = radarChart.data.datasets.findIndex(x => x.label === value);
+    radarChart.data.datasets.splice(index, 1);
+    radarChart.update();
 }
 // Update data
 const updataRadarData = () => {
@@ -76,9 +78,4 @@ const getLastDaysDate = (year) => {
         lastDayDates.push(date);
     }
     return lastDayDates;
-}
-
-// Popup message
-const popUpMessage = () => {
-    
 }
