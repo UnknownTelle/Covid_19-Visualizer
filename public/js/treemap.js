@@ -18,7 +18,6 @@ https://www.youtube.com/watch?v=GLnRak17GFM
 
 const treeData = {
     datasets: [{
-        label: 'temp',
         tree: [
             {value: 18, month: 'January', name: 1},
             {value: 32, month: 'February', name: 2},
@@ -78,10 +77,26 @@ const treemapChart = new Chart(
 );
 
 function colourFormat(ctx) {
+    const colourArray = [
+        '252, 40, 40', '252, 152, 3', '38, 36, 66',
+        '61, 75, 145', '3, 252, 244', '3, 49, 252',
+        '136, 3, 252', '7, 0, 110', '3, 0, 41',
+        '194, 161, 212', '51, 51, 51', '30,30,30'
+    ];
+    const monthArray = [];
+
     if (ctx.type !== 'data'){
         return 'transparent';
     }
+    const treemapDatasets = ctx.chart.config._config.data.datasets[0]
+    treemapDatasets.tree.forEach(month => {
+        monthArray.push(month.month);
+    });
+    const filterMonthArray = [...new Set(monthArray)];
+    const indexOfMonth = filterMonthArray.indexOf(ctx.raw._data.month);
+
     const value = ctx.raw.v;
     let colour = (Math.log(value) / 10)
-    return `rgba(255, 26, 104, ${colour})`
+    return `rgba(${colourArray[indexOfMonth]}, ${colour})`
 }
+
