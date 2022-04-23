@@ -50,7 +50,7 @@ async function drawChart(date) {
 
     // Render Block
     chart = new Chart(
-        document.getElementById('chart'),
+        document.getElementById('line-bar-chart'),
         config
     )
 }

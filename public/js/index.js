@@ -34,8 +34,9 @@ const getData = async (value, key) => {
 }
 
 // Controlthe outcome of the chart choice buttons
-const lineBarCanvas = document.getElementById('line_bar-container');
-const radarCanvas = document.getElementById('radar-canvas')
+const lineBarCanvas = document.getElementById('line-bar-container');
+const radarCanvas = document.getElementById('radar-container');
+const treemapCanvas = document.getElementById('treemap-container');
 const tableView = document.getElementById('table-view');
 
 // Bar chart
@@ -66,6 +67,14 @@ document.getElementById('radar').onclick = () => {
         removeTable('tableBody');
     }
 };
+// Treemap chart
+document.getElementById('treemap').onclick = () => {
+    lineBarCanvas.style.display = 'none';
+    radarCanvas.style.display = 'none';
+    treemapCanvas.style.display = 'block';
+    tableView.style.visibility = 'hidden';
+    removeTable('tableBody');
+}
 // Table view
 document.getElementById('table').onclick = () => {
     lineBarCanvas.style.display = 'none';
