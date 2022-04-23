@@ -18,32 +18,7 @@ https://www.youtube.com/watch?v=GLnRak17GFM
 
 const treeData = {
     datasets: [{
-        tree: [
-            {value: 18, month: 'January', name: 1},
-            {value: 32, month: 'February', name: 2},
-            {value: 22, month: 'March', name: 3},
-            {value: 15, month: 'April', name: 4},
-            {value: 8, month: 'May', name: 5},
-            {value: 12, month: 'June', name: 6},
-            {value: 3, month: 'July', name: 1},
-            {value: 16, month: 'August', name: 2},
-            {value: 23, month: 'September', name: 3},
-            {value: 9, month: 'October', name: 4},
-            {value: 11, month: 'November', name: 5},
-            {value: 4, month: 'December', name: 6},
-            {value: 5, month: 'January', name: 2},
-            {value: 3, month: 'February', name: 3},
-            {value: 7, month: 'March', name: 4},
-            {value: 13, month: 'April', name: 5},
-            {value: 6, month: 'May', name: 6},
-            {value: 22, month: 'June', name: 1},
-            {value: 11, month: 'July', name: 2},
-            {value: 4, month: 'August', name: 3},
-            {value: 6, month: 'September', name: 4},
-            {value: 21, month: 'October', name: 5},
-            {value: 34, month: 'November', name: 6},
-            {value: 1, month: 'December', name: 1},
-        ],
+        tree: [],
         backgroundColor: (ctx) => colourFormat(ctx),
         labels: {
             display: true,
@@ -78,10 +53,8 @@ const treemapChart = new Chart(
 
 function colourFormat(ctx) {
     const colourArray = [
-        '252, 40, 40', '252, 152, 3', '38, 36, 66',
-        '61, 75, 145', '3, 252, 244', '3, 49, 252',
-        '136, 3, 252', '7, 0, 110', '3, 0, 41',
-        '194, 161, 212', '51, 51, 51', '30,30,30'
+        '252, 40, 40', '252, 152, 3', '38, 36, 66', '61, 75, 145', '3, 252, 244', '3, 49, 252',
+        '136, 3, 252', '7, 0, 110', '3, 0, 41', '194, 161, 212', '51, 51, 51', '30,30,30'
     ];
     const monthArray = [];
 
@@ -96,7 +69,26 @@ function colourFormat(ctx) {
     const indexOfMonth = filterMonthArray.indexOf(ctx.raw._data.month);
 
     const value = ctx.raw.v;
-    let colour = (Math.log(value) / 10)
+    let colour = (Math.log(value) / 40)
     return `rgba(${colourArray[indexOfMonth]}, ${colour})`
+}
+
+const addTreemapData = async (key) => {
+    const months = ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'];
+
+    const data = await lastDayOfMonthData(key);
+    let count = 0;
+    data.forEach(value => {
+        const newData = {
+            value: value,
+            month: months[count],
+            name: key
+        }
+        count++
+        treemapChart.config._config.data.datasets[0].tree.push(newData);
+    })
+    treemapChart.update();
+    console.log(treemapChart.config._config.data.datasets[0].tree)
 }
 
