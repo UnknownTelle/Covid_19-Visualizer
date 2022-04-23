@@ -12,9 +12,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
         integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-treemap@2.0.2/dist/chartjs-chart-treemap.min.js"></script>
     <script
         src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-treemap@2.0.2/dist/chartjs-chart-treemap.min.js"></script>
 </head>
 
 <body>
@@ -42,7 +42,8 @@
                     onclick="checkboxValue(this)">
                 <label class="checkbox-label" for="total_cases">Total Cases</label> <br>
 
-                <input class="checkbox-input" type="checkbox" id="new_cases" value="new_cases" onclick="checkboxValue(this)">
+                <input class="checkbox-input" type="checkbox" id="new_cases" value="new_cases"
+                    onclick="checkboxValue(this)">
                 <label class="checkbox-label" for="new_cases">New Cases</label><br>
 
                 <input class="checkbox-input" type="checkbox" id="new_cases_smoothed" value="new_cases_smoothed"
@@ -124,6 +125,7 @@
     <script src="js/chart.js"></script>
     <script src="js/table.js"></script>
     <script src="js/radarchart.js"></script>
+    <script src="js/treemap.js"></script>
 </body>
 
 </html>

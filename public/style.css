@@ -115,8 +115,9 @@
 .line-bar-container {
     position: absolute;
     top: 5%;
+    left: 3%;
     height: 85%;
-    width: 98%;
+    width: 95%;
 }
 
 .radar-container {
@@ -137,8 +138,8 @@
 .treemap-container {
     position: absolute;
     top: 5%;
-    height: 85%;
-    width: 98%;
+    left: 7.5%;
+    width: 85%;
     display: none;
 }
 
