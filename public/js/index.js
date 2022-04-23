@@ -43,6 +43,7 @@ const tableView = document.getElementById('table-view');
 document.getElementById('bar').onclick = () => {
     lineBarCanvas.style.display = 'block';
     radarCanvas.style.display = 'none';
+    treemapCanvas.style.display = 'none';
     tableView.style.visibility = 'hidden';
     removeTable('tableBody');
     chart.config.type = 'bar'
@@ -52,6 +53,7 @@ document.getElementById('bar').onclick = () => {
 document.getElementById('line').onclick = () => {
     lineBarCanvas.style.display = 'block';
     radarCanvas.style.display = 'none';
+    treemapCanvas.style.display = 'none';
     tableView.style.visibility = 'hidden';
     removeTable('tableBody');
     chart.config.type = 'line'
@@ -63,6 +65,7 @@ document.getElementById('radar').onclick = () => {
     if (confirm(message) == true) {
         lineBarCanvas.style.display = 'none';
         radarCanvas.style.display = 'block';
+        treemapCanvas.style.display = 'none';
         tableView.style.visibility = 'hidden';
         removeTable('tableBody');
     }
@@ -79,6 +82,7 @@ document.getElementById('treemap').onclick = () => {
 document.getElementById('table').onclick = () => {
     lineBarCanvas.style.display = 'none';
     radarCanvas.style.display = 'none';
+    treemapCanvas.style.display = 'none';
     tableView.style.visibility = 'visible';
     buildTable()
 };
