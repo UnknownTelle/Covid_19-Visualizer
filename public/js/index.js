@@ -1,37 +1,7 @@
 /*-----------------------------------------------------------------
-Description: This javaScript file takes care of all indirect methods
-within this application, example methods that link to the server or
-collect the data from the HTML page.
+Description: This javaScript file takes care of the users inputed
+data within the application.
 ------------------------------------------------------------------*/
-
-// Gets data from server and sends to correct fuction using value or key
-const getData = async (value, key) => {
-    const data = { value }
-    // specify the type of request and places data in request
-    const options = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-    };
-    const res = await fetch('/', options) // Send request
-    const response = await res.json(); // Gets response
-    // Check what data its dealing with and who to send it to
-    switch (value) {
-        case 'date':
-            let dates = [];
-            for (let i = 0; i < response.length; i++) {
-                dates.push(response[i].split('/').reverse().join('-')) // Format date
-            }
-            // Check who to send data to
-            if (key == 'return') {
-                return dates;
-            } else {
-                drawChart(dates);
-            }
-            break;
-        default: return response;
-    }
-}
 
 // Controlthe outcome of the chart choice buttons
 const lineBarCanvas = document.getElementById('line-bar-container');
@@ -91,6 +61,7 @@ document.getElementById('table').onclick = () => {
 const checkboxValue = (key) => {
     if (key.checked) {
         addData(key.value);
+        addRadarData(key.value);
     } else {
         removeData(key.value);
         removeRadarData(key.value);
