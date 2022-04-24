@@ -42,8 +42,8 @@ const addRadarData = async (key) => {
 }
 
 // Remove data from radar chart
-const removeRadarData = (value) => {
-    const index = radarChart.data.datasets.findIndex(x => x.label === value);
+const removeRadarData = (key) => {
+    const index = radarChart.data.datasets.findIndex(x => x.label === key);
     radarChart.data.datasets.splice(index, 1);
     radarChart.update();
 }
