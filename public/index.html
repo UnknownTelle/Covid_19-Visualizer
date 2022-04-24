@@ -30,11 +30,11 @@
         <div class="side-bar">
             <div class="date-choice">
                 <label class="data-label" for="start">Start date:</label>
-                <input class="date-input-start" type="date" id="start_date" name="trip-start" value="2020-01-31"
-                    min="2020-01-31" max="2020-12-31" onchange="filterByDate()"> <br>
+                <input class="date-input-start" type="date" id="start_date" name="trip-start" value="2022-01-01"
+                    min="2020-01-31" max="2022-03-23" onchange="filterByDate()"> <br>
                 <label class="data-label" for="end">End date:</label>
-                <input class="date-input-end" type="date" id="end_date" name="trip-start" value="2020-12-31"
-                    min="2020-01-03" max="2020-12-31" onchange="filterByDate()">
+                <input class="date-input-end" type="date" id="end_date" name="trip-start" value="2022-04-23"
+                    min="2020-02-31" max="2022-04-23" onchange="filterByDate()">
             </div>
             <div class="checkbox-container" id="checkbox-container">
                 <label class="checkbox-header">Cases</label><br>
@@ -93,6 +93,128 @@
                 <input class="checkbox-input" type="checkbox" id="reproduction_rate" value="reproduction_rate"
                     onclick="checkboxValue(this)">
                 <label class="checkbox-label" for="reproduction_rate">Reproduction Rate</label><br>
+
+                <label class="checkbox-header">Hospital</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="icu_patients" value="icu_patients"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="icu_patients">ICU Patients</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="icu_patients_per_million" value="icu_patients_per_million"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="icu_patients_per_million">ICU Patients Per Million</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="hosp_patients" value="hosp_patients"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="hosp_patients">Hospital Patients</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="hosp_patients_per_million" value="hosp_patients_per_million"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="hosp_patients_per_million">Hospital Patients Per Million</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="weekly_icu_admissions" value="weekly_icu_admissions"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="weekly_icu_admissions">Weekly ICU Admissions</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="weekly_icu_admissions_per_million" value="weekly_icu_admissions_per_million"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="weekly_icu_admissions_per_million">Weekly ICU Admissions Per Million</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="weekly_hosp_admissions" value="weekly_hosp_admissions"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="weekly_hosp_admissions">Weekly Hospital Admissions</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="weekly_hosp_admissions_per_million" value="weekly_hosp_admissions_per_million"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="weekly_hosp_admissions_per_million">Weekly Hospital Admissions Per Million</label><br>
+
+                <label class="checkbox-header">Tests Data</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="total_tests" value="total_tests"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="total_tests">Total Tests</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="new_tests" value="new_tests"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="new_tests">New Tests</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="total_tests_per_thousand" value="total_tests_per_thousand"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="total_tests_per_thousand">Total Tests Per Thousand</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="new_tests_per_thousand" value="new_tests_per_thousand"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="new_tests_per_thousand">New Tests Per Thousand</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="new_tests_smoothed" value="new_tests_smoothed"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="new_tests_smoothed">New Tests Smoothed</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="new_tests_smoothed_per_thousand" value="new_tests_smoothed_per_thousand"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="new_tests_smoothed_per_thousand">New Tests Smoothed Per Thousand</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="positive_rate" value="positive_rate"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="positive_rate">Positive Rate</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="tests_per_case" value="tests_per_case"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="tests_per_case">Tests Per Case</label><br>
+
+                <label class="checkbox-header">Vaccination Data</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="total_vaccinations" value="total_vaccinations"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="total_vaccinations">Total Vaccinations</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="people_vaccinated" value="people_vaccinated"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="people_vaccinated">People Vaccinated</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="people_fully_vaccinated" value="people_fully_vaccinated"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="people_fully_vaccinated">People Fully Vaccinated</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="total_boosters" value="total_boosters"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="total_boosters">Total Boosters</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="new_vaccinations" value="new_vaccinations"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="new_vaccinations">New Vaccinations</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="new_vaccinations_smoothed" value="new_vaccinations_smoothed"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="new_vaccinations_smoothed">New Vaccinations Smoothed</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="total_vaccinations_per_hundred" value="total_vaccinations_per_hundred"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="total_vaccinations_per_hundred">Total Vaccinations Per Hundred</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="people_vaccinated_per_hundred" value="people_vaccinated_per_hundred"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="people_vaccinated_per_hundred">People Vaccinated Per Hundred</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="people_fully_vaccinated_per_hundred" value="people_fully_vaccinated_per_hundred"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="people_fully_vaccinated_per_hundred">People Fully Vaccinated Per Hundred</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="total_boosters_per_hundred" value="total_boosters_per_hundred"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="total_boosters_per_hundred">Total Boosters Per Hundred</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="new_vaccinations_smoothed_per_million" value="new_vaccinations_smoothed_per_million"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="new_vaccinations_smoothed_per_million">New Vaccinations Smoothed Per Million</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="new_people_vaccinated_smoothed" value="new_people_vaccinated_smoothed"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="new_people_vaccinated_smoothed">New People Vaccinated Smoothed</label><br>
+
+                <input class="checkbox-input" type="checkbox" id="new_people_vaccinated_smoothed_per_hundred" value="new_people_vaccinated_smoothed_per_hundred"
+                    onclick="checkboxValue(this)">
+                <label class="checkbox-label" for="new_people_vaccinated_smoothed_per_hundred">new people vaccinated smoothed per hundred</label><br>
             </div>
         </div>
         <div class="chart-container">
