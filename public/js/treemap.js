@@ -18,7 +18,9 @@ https://www.youtube.com/watch?v=GLnRak17GFM
 
 const treeData = {
     datasets: [{
-        tree: [],
+        tree: [
+            {value: '0', month:'none', name:'none'}
+        ],
         backgroundColor: (ctx) => colourFormat(ctx),
         labels: {
             display: true,
@@ -51,16 +53,16 @@ const treemapChart = new Chart(
     treeConfig
 );
 
+// Function to add the colour to each group withing the treemap
 function colourFormat(ctx) {
-    const colourArray = [
+    const colourArray = ['0,0,0',
         '252, 40, 40', '252, 152, 3', '38, 36, 66', '61, 75, 145', '3, 252, 244', '3, 49, 252',
         '136, 3, 252', '7, 0, 110', '3, 0, 41', '194, 161, 212', '51, 51, 51', '30,30,30'
     ];
-    const monthArray = [];
-
     if (ctx.type !== 'data'){
         return 'transparent';
     }
+    const monthArray = [];
     const treemapDatasets = ctx.chart.config._config.data.datasets[0]
     treemapDatasets.tree.forEach(month => {
         monthArray.push(month.month);
@@ -73,22 +75,29 @@ function colourFormat(ctx) {
     return `rgba(${colourArray[indexOfMonth]}, ${colour})`
 }
 
+// Function to add new data to the treemap
 const addTreemapData = async (key) => {
     const months = ['January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'];
-
-    const data = await lastDayOfMonthData(key);
-    let count = 0;
-    data.forEach(value => {
+    const data = await lastDayOfMonthData(key); // Gets data
+    for (var i = 0; i < data.length; i++){ 
+        // Formats the data
         const newData = {
-            value: value,
-            month: months[count],
+            value: data[i],
+            month: months[i],
             name: key
         }
-        count++
-        treemapChart.config._config.data.datasets[0].tree.push(newData);
-    })
-    treemapChart.update();
-    console.log(treemapChart.config._config.data.datasets[0].tree)
+        // Adds newData to array
+        treemapChart.data.datasets[0].tree.push(newData);
+    }
+    treemapChart.update(); // Updates chart
+}
+
+// Function to remove data from the treemap
+const removeTreemapData = async (key) => {
+    const data = await treemapChart.data.datasets[0].tree; // Gets current data
+    const firstIndex = data.findIndex(x => x.name === key) // Find first index
+    treemapChart.data.datasets[0].tree.splice(firstIndex, 12); // Removes 12 from first index
+    treemapChart.update(); // Update chart
 }
 
