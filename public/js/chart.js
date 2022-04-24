@@ -57,14 +57,13 @@ async function drawChart(date) {
 }
 
 // Adds new data
-const addData = async (key) => {
+const addData = async (key, colour) => {
     const data = await getData(key); // Gets data using lable
-    const color = generateColour();
     const newDataset = {
         label: key,
         data: data,
-        backgroundColor: color,
-        borderColor: color
+        backgroundColor: colour,
+        borderColor: colour
     }
     chart.data.datasets.push(newDataset); // Push new data
     filterByDate(); // Check to see if dates are correct

@@ -30,11 +30,11 @@ const radarChart = new Chart(
 );
 
 // Adds data to the radar chart
-const addRadarData = async (key) => {
+const addRadarData = async (key, colour) => {
     const data = await lastDayOfMonthData(key)
     const addData = {
         label: key,
-        backgroundColor: '',
+        backgroundColor: colour,
         data: data
     }
     radarChart.data.datasets.push(addData);

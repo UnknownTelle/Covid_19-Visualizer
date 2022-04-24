@@ -53,15 +53,16 @@ const treemapChart = new Chart(
     treeConfig
 );
 
+// (ctx) => colourFormat(ctx),
+
 // Function to add the colour to each group withing the treemap
 function colourFormat(ctx) {
     const colourArray = ['0,0,0',
-        '252, 40, 40', '252, 152, 3', '38, 36, 66', '61, 75, 145', '3, 252, 244', '3, 49, 252',
-        '136, 3, 252', '7, 0, 110', '3, 0, 41', '194, 161, 212', '51, 51, 51', '30,30,30'
-    ];
-    if (ctx.type !== 'data'){
-        return 'transparent';
-    }
+    '245, 29, 29', '48, 207, 17', '10, 32, 199', '255, 170, 0', '255, 0, 242', 
+    '240, 29, 29', '48, 217, 17', '10, 42, 199', '255, 180, 0', '255, 10, 242',
+    '250, 29, 29', '48, 227, 17'];
+
+    if (ctx.type !== 'data'){ return 'transparent'; }
     const monthArray = [];
     const treemapDatasets = ctx.chart.config._config.data.datasets[0]
     treemapDatasets.tree.forEach(month => {
