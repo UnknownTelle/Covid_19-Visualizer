@@ -39,21 +39,22 @@
 
 .date-input-start {
     position: relative;
-    width: 65%;
-    margin-left: 2%;
+    width: 45%;
+    left: 10%;
+    /* margin-left: 2%; */
     background-color: #F6F6F3;
 }
 
 .date-input-end {
     position: relative;
-    width: 65%;
-    margin-left: 5%;
+    width: 45%;
+    left: 13%;
     background-color: #F6F6F3;
 }
 
 .data-label {
     margin-left: 3%;
-    font-size: 18px;
+    font-size: clamp(0.6rem, 2.5vw, 1.1rem);
     font-weight: bold;
 }
 
@@ -62,7 +63,7 @@
     top: 5%;
     left: 2%;
     width: 93%;
-    height: 80%;
+    height: 77%;
     overflow-y: scroll;
 }
 
