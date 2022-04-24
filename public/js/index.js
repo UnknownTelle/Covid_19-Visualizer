@@ -60,23 +60,28 @@ document.getElementById('table').onclick = () => {
 // Gets the value and sends to the correct function
 const checkboxValue = (key) => {
     if (key.checked) {
-        addData(key.value);
-        addRadarData(key.value);
+        const colour = getColour()
+        addData(key.value, colour);
+        addRadarData(key.value, colour);
+        addTreemapData(key.value);
     } else {
         removeData(key.value);
         removeRadarData(key.value);
+        removeTreemapData(key.value)
     }
 }
-
-// Generate a colour
-const generateColour = () => {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    let result;
-    for (var i = 0; i < 6; i++) {
-        result = color += letters[Math.floor(Math.random() * 16)];
+// Set the colour for the bar, line and radar charts
+let colourCount = 0;
+const getColour = () => {
+    const colourArray = ['245, 29, 29', '48, 207, 17', '10, 32, 199', '255, 170, 0', '255, 0, 242', '51, 46, 46']
+    const randomNumber = Math.random() * 0.7 + 0.3;
+    const colourTransparent = randomNumber.toFixed(2)
+    if (colourCount === 6){
+        colourCount = 0
     }
-    return result;
+    const colourValue = `rgba(${colourArray[colourCount]}, ${colourTransparent})`
+    colourCount++
+    return colourValue
 }
 
 window.onload = getData('date')
