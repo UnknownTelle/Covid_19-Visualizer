@@ -20,6 +20,11 @@ const radarConfig = {
     options: {
         maintainAspectRatio: false,
         responsive: false,
+        plugins: {
+            legend: {
+                position: 'top'
+            },
+        },
     }
 }
 
@@ -31,7 +36,8 @@ const radarChart = new Chart(
 
 // Adds data to the radar chart
 const addRadarData = async (key, colour) => {
-    const data = await lastDayOfMonthData(key)
+    const yearValue = document.getElementById('render-display-year').value;
+    const data = await lastDayOfMonthData(key, yearValue)
     const addData = {
         label: key,
         backgroundColor: colour,
@@ -46,4 +52,16 @@ const removeRadarData = (key) => {
     const index = radarChart.data.datasets.findIndex(x => x.label === key);
     radarChart.data.datasets.splice(index, 1);
     radarChart.update();
+}
+
+// Will update the data within the chart depenging on select values
+const renderUpdate = () => {
+    const currentData = [...radarChart.data.datasets] // Gets current data
+    radarChart.data.datasets.splice(0, currentData.length) // Removes all current data
+    // Gets all the data to send back to addRadarData
+    currentData.forEach(dataset => {
+        const colour = dataset.backgroundColor;
+        const label = dataset.label;
+        addRadarData(label, colour);
+    });
 }
