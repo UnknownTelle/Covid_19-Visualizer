@@ -1,20 +1,3 @@
-/* 
-If you have time to complet
-Can use a chart.js plugin to complet
-for the doc:
-https://chartjs-chart-treemap.pages.dev/usage.html#dividers
-
-To use just add this into the HTML under the chart.js CDN:
-<script src="https://cdn.jsdelivr.net/npm/chartjs-chart-treemap@2.0.2/dist/chartjs-chart-treemap.min.js"></script>
-
-Video to add treemap:
-https://www.youtube.com/watch?v=fN-M7viEIy8
-Video to help with colour:
-https://www.youtube.com/watch?v=j8yiJFbCPI0
-Video to help format labels:
-https://www.youtube.com/watch?v=GLnRak17GFM
-
- */
 
 const treeData = {
     datasets: [{
@@ -78,9 +61,10 @@ function colourFormat(ctx) {
 
 // Function to add new data to the treemap
 const addTreemapData = async (key) => {
+    const yearValue = document.getElementById('treemap-display-year').value;
     const months = ['January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'];
-    const data = await lastDayOfMonthData(key); // Gets data
+    const data = await lastDayOfMonthData(key, yearValue); // Gets data
     for (var i = 0; i < data.length; i++){ 
         // Formats the data
         const newData = {
@@ -100,5 +84,18 @@ const removeTreemapData = async (key) => {
     const firstIndex = data.findIndex(x => x.name === key) // Find first index
     treemapChart.data.datasets[0].tree.splice(firstIndex, 12); // Removes 12 from first index
     treemapChart.update(); // Update chart
+}
+
+const treemapUpdate = () => {
+    const currentData = [...treemapChart.data.datasets[0].tree];
+    treemapChart.data.datasets[0].tree.splice(0, currentData.length)
+    let nameArray = [];
+    currentData.forEach(tree => {
+        nameArray.push(tree.name)
+    });
+    filterNameArray = [...new Set(nameArray)];
+    filterNameArray.forEach(name => {
+        addTreemapData(name);
+    })
 }
 

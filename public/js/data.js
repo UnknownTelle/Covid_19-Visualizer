@@ -57,8 +57,8 @@ const filterByDate = async () => {
     updateTable();
 }
 
-const lastDayOfMonthData = async (key) => {
-    const dates = await indexOfMonthsData(2020); // get from added element laster
+const lastDayOfMonthData = async (key, year) => {
+    const dates = await indexOfMonthsData(year); // get from added element laster
     let lastDaysData = [];
     const data = await getData(key); // Gets data
     dates.forEach(index => {
