@@ -1,6 +1,5 @@
 const express = require('express');
 const http = require('http');
-const cors = require('cors');
 const path = require('path');
 const app = express();
 
@@ -10,7 +9,6 @@ const getData = require('./server/data')
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(express.json({ limit: '1mb' }));
-app.use(cors());
 
 // Routes
 app.get('/', (req, res) => {
