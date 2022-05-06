@@ -24,6 +24,10 @@ const radarConfig = {
             legend: {
                 position: 'top'
             },
+            title: {
+                display: true,
+                text: 'Coronavirus Data'
+              },
         },
     }
 }

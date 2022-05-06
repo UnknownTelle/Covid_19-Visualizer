@@ -129,6 +129,12 @@
     display: none;
 }
 
+.radar-button {
+    position: relative;
+    left: 8%;
+    top: 4%;
+}
+
 .radar-canvas {
     position: absolute;
     width: 500px;

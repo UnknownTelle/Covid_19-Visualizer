@@ -31,14 +31,11 @@ document.getElementById('line').onclick = () => {
 };
 // Rader chart
 document.getElementById('radar').onclick = () => {
-    const message = 'The Radar chart will only show the last day of the month data. Do you want to continue?'
-    if (confirm(message) == true) {
         lineBarCanvas.style.display = 'none';
         radarCanvas.style.display = 'block';
         treemapCanvas.style.display = 'none';
         tableView.style.visibility = 'hidden';
         removeTable('tableBody');
-    }
 };
 // Treemap chart
 document.getElementById('treemap').onclick = () => {

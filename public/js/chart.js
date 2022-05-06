@@ -32,7 +32,11 @@ async function drawChart(date) {
                 tooltip: {
                     mode: 'index',
                     intersect: false
-                }
+                },
+                title: {
+                    display: true,
+                    text: 'Coronavirus Data'
+                  },
             },
             hover: {
                 mode: 'nearest',

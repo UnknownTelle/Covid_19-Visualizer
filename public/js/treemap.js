@@ -22,7 +22,7 @@ const treeConfig = {
         plugins: {
           title: {
             display: true,
-            text: 'My treemap chart'
+            text: 'Coronavirus Data'
           },
           legend: {
             display: false
